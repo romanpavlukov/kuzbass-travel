@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Достопримечательности Кузбасса</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .intro h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .attractions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            background: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 4px solid #2c3e50;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 1.4em;
+        }
+
+        .short-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .full-text {
+            display: none;
+            padding-top: 10px;
+            animation: fadeIn 0.5s ease;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .read-more {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+            font-size: 0.95em;
+            display: inline-block;
+        }
+
+        .read-more:hover {
+            background-color: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .facts {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            margin: 50px 0;
+            text-align: center;
+            border-radius: 10px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .facts h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .facts p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #1a252f;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        /* Мобильная адаптация */
+        @media (max-width: 768px) {
+            header {
+                height: 300px;
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+                margin-bottom: 10px;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            .intro {
+                margin: 30px auto;
+                padding: 0 15px;
+            }
+
+            .intro h2 {
+                font-size: 1.5em;
+            }
+
+            .attractions {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 15px;
+            }
+
+            .card {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .card img {
+                height: 180px;
+            }
+
+            .card-content {
+                padding: 15px;
+            }
+
+            .card h3 {
+                font-size: 1.3em;
+            }
+
+            .facts {
+                padding: 30px 15px;
+                margin: 40px 0;
+            }
+
+            .facts h2 {
+                font-size: 1.5em;
+            }
+
+            footer {
+                padding: 20px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                height: 250px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .intro {
+                margin: 20px auto;
+            }
+
+            .intro h2 {
+                font-size: 1.3em;
+            }
+
+            .card img {
+                height: 150px;
+            }
+
+            .card h3 {
+                font-size: 1.2em;
+            }
+
+            .short-text p,
+            .full-text p {
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+
+            .read-more {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+
+            .facts {
+                padding: 20px 15px;
+                margin: 30px 0;
+            }
+
+            .facts h2 {
+                font-size: 1.3em;
+            }
+
+            .facts p {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Достопримечательности Кузбасса</h1>
+        <p style="font-size: 1.3em;">10 уникальных мест, которые стоит увидеть</p>
+    </header>
+
+    <div class="intro">
+        <h2>Кемеровская область (Кузбасс)</h2>
+        <p>Это не только угольный край, но и удивительная природа, древние петроглифы, горнолыжные курорты и
+            исторические памятники. Здесь каждый найдёт что-то интересное!</p>
+    </div>
+
+    <div class="attractions">
+        <!-- Карточка 1 -->
+        <div class="card">
+            <img src="https://static.tildacdn.com/tild3933-3436-4634-b336-363737616434/2WRsoKTRgcI.jpg"
+                alt="Поднебесные Зубья">
+            <div class="card-content">
+                <h3>Поднебесные Зубья</h3>
+                <div class="short-text">
+                    <p>Горный массив в Горной Шории с зубчатыми скалами высотой до 2000 метров. Популярное место для
+                        походов и фотосъёмки.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Этот величественный горный массив в Горной Шории получил своё название за острые скальные
+                        выступы, напоминающие зубы дракона. Наивысшая точка - гора Верхний Зуб (2178 м) - предлагает
+                        захватывающие панорамы на сотни километров вокруг. Местные склоны покрыты реликтовыми кедровыми
+                        лесами, где обитают редкие виды животных, включая северного оленя. У подножия гор берёт начало
+                        множество кристально чистых рек и ручьёв, популярных среди рыбаков. Зимой сюда приезжают
+                        любители фрирайда, а летом - альпинисты и треккеры. Особой популярностью пользуется маршрут к
+                        Шаман-камню - древнему культовому месту шорцев. Недавно здесь появились комфортные турбазы,
+                        сочетающие современные удобства с атмосферой дикой природы.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/%D0%93%D0%BE%D1%80%D0%BD%D0%BE%D0%BB%D1%8B%D0%B6%D0%BD%D1%8B%D0%B9-%D0%BA%D1%83%D1%80%D0%BE%D1%80%D1%82-%D0%A8%D0%B5%D1%80%D0%B5%D0%B3%D0%B5%D1%88.jpg"
+                alt="Шерегеш">
+            <div class="card-content">
+                <h3>Шерегеш</h3>
+                <div class="short-text">
+                    <p>Один из лучших горнолыжных курортов России с трассами для всех уровней подготовки.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Этот всероссийски известный горнолыжный курорт ежегодно принимает сотни тысяч туристов со всей
+                        страны. Главное его богатство - уникальный микроклимат, обеспечивающий устойчивый снежный покров
+                        толщиной до 4 метров. 15 подъёмников обслуживают 35 трасс общей протяжённостью более 40 км,
+                        включая сложные спуски для экспертов. В последние годы здесь построили современные отели,
+                        спа-комплексы и развлекательные центры европейского уровня. Летом Шерегеш превращается в мекку
+                        для маунтинбайкеров, парапланеристов и любителей джип-туров. Особой популярностью пользуются
+                        экскурсии к скальному массиву Спящий Саян и водопаду Сага. Местная инфраструктура продолжает
+                        развиваться, сохраняя при этом свою уникальную атмосферу.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="card">
+            <img src="https://tomskayapisanitsa.ru/images/main.jpg" alt="Томская Писаница">
+            <div class="card-content">
+                <h3>Томская Писаница</h3>
+                <div class="short-text">
+                    <p>Музей-заповедник с древними наскальными рисунками возрастом 4000 лет.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Этот уникальный музей-заповедник хранит около 300 древних петроглифов, созданных 4-6 тысяч лет
+                        назад. На скалах можно увидеть изображения лосей, медведей, солнца и загадочных антропоморфных
+                        существ. Помимо наскальной живописи, здесь воссозданы реконструкции жилищ древних людей и
+                        средневековых крепостей. Особый интерес представляет Шорский улус - этнографический комплекс с
+                        подлинными постройками коренного населения. В музее регулярно проводятся мастер-классы по
+                        традиционным ремёслам и обрядовые праздники. Для детей оборудован контактный зоопарк с
+                        сибирскими животными. Современный музейный комплекс гармонично вписан в природный ландшафт
+                        правого берега Томи.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 4 -->
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BA%D0%B0%D1%8F_%D0%BA%D1%80%D0%B5%D0%BF%D0%BE%D1%81%D1%82%D1%8C.jpg"
+                alt="Кузнецкая крепость">
+            <div class="card-content">
+                <h3>Кузнецкая крепость</h3>
+                <div class="short-text">
+                    <p>Историческая крепость в Новокузнецке, построенная в XIX веке.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Эта каменная крепость, построенная в 1820 году, является памятником федерального значения и
+                        визитной карточкой Новокузнецка. Хотя военное значение она утратила уже к середине XIX века, её
+                        мощные стены и бастионы прекрасно сохранились. Сегодня на территории крепости работает музей,
+                        рассказывающий о истории Сибирской линии укреплений. Особый интерес представляет коллекция
+                        старинного оружия и экспозиция, посвящённая быту гарнизона. Ежегодно здесь проводятся
+                        исторические реконструкции и рыцарские турниры. Со смотровой площадки открывается великолепный
+                        вид на город и окрестности. Крепость стала культурным центром, где сочетаются история,
+                        образование и современные музейные технологии.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 5 -->
+        <div class="card">
+            <img src="https://www.kuzbass-fair.ru/images/e38496a4df4ab4cf4ee2d14af62383b3.jpg" alt="Азасская пещера">
+            <div class="card-content">
+                <h3>Азасская пещера</h3>
+                <div class="short-text">
+                    <p>Таинственная пещера, где по легендам обитает снежный человек.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Эта таинственная пещера в Таштагольском районе стала известна благодаря многочисленным сообщениям
+                        о встречах со снежным человеком. Её глубина составляет около 200 метров, а общая длина ходов
+                        превышает полкилометра. Уникальный микроклимат пещеры способствует образованию причудливых
+                        кальцитовых образований. Учёные обнаружили здесь следы стоянок древнего человека и останки
+                        доисторических животных. Особый интерес представляет подземное озеро с кристально чистой водой,
+                        температура которой не превышает +4°C. Экскурсии в пещеру проводятся только с опытными гидами и
+                        специальным снаряжением. Окрестности пещеры входят в состав Шорского национального парка с
+                        уникальной флорой и фауной.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 6 -->
+        <div class="card">
+            <img src="https://www.sibalt.ru/images/shoria/zolotaya_shoriya/zolotaya_shoriya2.jpg" alt="Золотая Шория">
+            <div class="card-content">
+                <h3>Золотая Шория</h3>
+                <div class="short-text">
+                    <p>Величественная бронзовая скульптура в Таштаголе, изображающая духа Горной Шории. Памятник высотой
+                        6 метров создан известным скульптором Даши Намдаковым и стал символом региона.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Этот шестиметровый бронзовый монумент работы Даши Намдакова был установлен в 2010 году на въезде
+                        в Таштагол. Скульптура изображает мифического покровителя Горной Шории - мудрого старца,
+                        сидящего на спине могучего оленя. Композиция символизирует единство человека и природы,
+                        традиционную связь шорцев с тайгой. Особенно впечатляюще памятник выглядит на закате, когда лучи
+                        солнца создают эффект золотого свечения. Автор вложил в работу элементы шаманской мифологии и
+                        буддийской философии. Рядом оборудована смотровая площадка с видом на долину реки Кондома. Этот
+                        памятник стал не только туристическим объектом, но и местом силы для местных жителей.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 7 -->
+        <div class="card">
+            <img src="https://cdn.culture.ru/images/3a70c626-32ab-5f37-9b66-491605d43608" alt="Красная Горка">
+            <div class="card-content">
+                <h3>Красная Горка</h3>
+                <div class="short-text">
+                    <p>Музей-заповедник угольной промышленности в Кемерово. Здесь можно увидеть уникальные экспонаты
+                        шахтёрской техники и памятник "Память шахтёрам Кузбасса" работы Эрнста Неизвестного.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Расположенный на правом берегу Томи, этот музейный комплекс рассказывает о становлении угольной
+                        промышленности Кузбасса. Главный экспонат - памятник Эрнста Неизвестного «Память шахтёрам
+                        Кузбасса», впечатляющий своей экспрессивной мощью. На открытой площадке представлена уникальная
+                        коллекция горной техники разных лет. В сохранившихся зданиях начала XX века размещены экспозиции
+                        о жизни первых переселенцев. Особый интерес представляет реконструкция первой шахты «Красная
+                        Горка», давшей название музею. Здесь регулярно проводятся фестивали промышленной культуры и
+                        исторические реконструкции. Музей гармонично сочетает индустриальную историю с живописными
+                        природными ландшафтами.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 8 -->
+        <div class="card">
+            <img src="https://nashural.ru/assets/uploads/7-138.jpg" alt="Мариинск">
+            <div class="card-content">
+                <h3>Мариинск</h3>
+                <div class="short-text">
+                    <p>Исторический город с сохранившейся деревянной архитектурой XIX века. Известен своими музеями,
+                        включая необычный музей "Бирюльки" с коллекцией старинных игрушек и предметов быта.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Этот старинный купеческий город сохранил уникальный архитектурный ансамбль XIX - начала XX веков.
+                        Главная гордость Мариинска - более 70 памятников деревянного зодчества с затейливой резьбой. В
+                        краеведческом музее представлены экспозиции о истории Сибирского тракта и золотой лихорадки.
+                        Особый интерес вызывает музей «Бирюльки» с коллекцией старинных игрушек и предметов быта.
+                        Сохранился комплекс зданий пересыльной тюрьмы, где содержались многие известные политические
+                        заключённые. Город славится своими традиционными промыслами, включая изготовление знаменитой
+                        настойки «Зверобой». Ежегодный фестиваль «Мариинская осень» собирает тысячи любителей истории и
+                        этнографии.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 9 -->
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/%D0%9E%D0%B7%D0%B5%D1%80%D0%BE_%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9_%D0%91%D0%B5%D1%80%D1%87%D0%B8%D0%BA%D1%83%D0%BB%D1%8C%2C_%D0%9A%D0%B5%D0%BC%D0%B5%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C.jpeg"
+                alt="Озеро Берчикуль">
+            <div class="card-content">
+                <h3>Озеро Берчикуль</h3>
+                <div class="short-text">
+                    <p>Самое большое озеро Кузбасса с кристально чистой водой. Популярное место для рыбалки, где водятся
+                        щука, окунь и другие виды рыб. Окружено живописными сосновыми лесами.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Это самое крупное озеро Кемеровской области площадью 32 кв. км известно своей удивительно чистой
+                        водой. Оно питается подземными источниками, что обеспечивает постоянную прозрачность и
+                        насыщенность кислородом. Богатая ихтиофауна включает 16 видов рыб, включая ценные породы вроде
+                        сига и пеляди. На берегу расположены несколько баз отдыха с комфортабельными домиками и пляжами.
+                        Особой популярностью пользуются прогулки на катерах к острову Утиный, где гнездятся редкие
+                        птицы. Окрестные леса богаты грибами и ягодами, а осенью сюда приезжают охотники на
+                        водоплавающую дичь. Озеро входит в состав природного заказника, что гарантирует сохранение его
+                        экосистемы.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 10 -->
+        <div class="card">
+            <img src="https://cdn.culture.ru/images/f814f782-9182-5460-b734-b4be1ede1648" alt="Музей Ф.М. Достоевского">
+            <div class="card-content">
+                <h3>Музей Ф.М. Достоевского</h3>
+                <div class="short-text">
+                    <p>Мемориальный музей в Новокузнецке, расположенный в доме, где писатель венчался со своей первой
+                        женой. Экспозиция рассказывает о сибирском периоде жизни Ф.М. Достоевского.</p>
+                    <button class="read-more" onclick="toggleText(this)">Подробнее</button>
+                </div>
+                <div class="full-text">
+                    <p>Этот мемориальный музей расположен в деревянном доме, где в 1857 году венчался великий писатель.
+                        Экспозиция подробно рассказывает о сибирском периоде жизни Достоевского, оказавшем огромное
+                        влияние на его творчество. Здесь можно увидеть подлинные вещи той эпохи, включая мебель, книги и
+                        предметы быта. Особую ценность представляет коллекция первых изданий произведений писателя с
+                        автографами. В музее воссоздана атмосфера провинциального города середины XIX века, который
+                        описан в «Записках из Мёртвого дома». Регулярно проводятся литературные вечера и научные
+                        конференции, посвящённые творчеству Достоевского. Музей стал важным культурным центром,
+                        связывающим современность с золотым веком русской литературы.</p>
+                    <button class="read-more" onclick="toggleText(this)">Свернуть</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="facts">
+        <h2>Интересные факты о Кузбассе</h2>
+        <p>• В Азасской пещере, по легендам, обитает снежный человек (йети)!</p>
+        <p>• Шерегеш — один из самых снежных курортов России, где сезон длится до мая.</p>
+        <p>• Томская Писаница — единственный в Сибири музей наскального искусства.</p>
+    </div>
+
+    <footer>
+        <p>Кузбасс — удивительный край, где сочетаются природа, история и современность. Изучайте и путешествуйте!</p>
+    </footer>
+
+    <script>
+        function toggleText(button) {
+            const cardContent = button.closest('.card-content');
+            const shortText = cardContent.querySelector('.short-text');
+            const fullText = cardContent.querySelector('.full-text');
+
+            if (shortText.style.display !== 'none') {
+                shortText.style.display = 'none';
+                fullText.style.display = 'block';
+                button.textContent = 'Свернуть';
+                fullText.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                shortText.style.display = 'block';
+                fullText.style.display = 'none';
+                button.textContent = 'Подробнее';
+            }
+        }
+    </script>
+</body>
+
+</html>
